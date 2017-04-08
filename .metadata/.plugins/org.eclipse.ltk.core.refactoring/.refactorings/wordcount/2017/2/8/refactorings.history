@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;SumReducer.java&apos; to &apos;log_file_analysis/src/stubs&apos;&#x0A;- Original project: &apos;wordcount&apos;&#x0A;- Destination element: &apos;log_file_analysis/src/stubs&apos;&#x0A;- Original element: &apos;stubs.SumReducer.java&apos;" description="Copy compilation unit" destination="=log_file_analysis/src&lt;stubs" element1="/src&lt;stubs{SumReducer.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1487488831007" units="1" version="1.0"/>
+</session>

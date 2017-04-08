@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="AvgWordLengthTest (1)" project="toolrunner" tests="3" started="3" failures="1" errors="0" ignored="0">
+  <testsuite name="test.AvgWordLengthTest" time="6.62">
+    <testcase name="testReducer" classname="test.AvgWordLengthTest" time="5.925">
+      <failure>java.lang.AssertionError: 6 Error(s): (Missing expected output (i, 2.0) at position 3., Missing expected output (n, 3.0) at position 4., Missing expected output (b, 4.0) at position 1., Missing expected output (d, 10.0) at position 2., Matched expected output (t, 3.5) but at incorrect position 0 (expected position 5), Missing expected output (N, 2.0) at position 0.)
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.apache.hadoop.mrunit.TestDriver.validate(TestDriver.java:294)
+	at org.apache.hadoop.mrunit.ReduceDriverBase.runTest(ReduceDriverBase.java:178)
+	at org.apache.hadoop.mrunit.TestDriver.runTest(TestDriver.java:137)
+	at test.AvgWordLengthTest.testReducer(AvgWordLengthTest.java:118)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:50)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)
+
+</failure>
+    </testcase>
+    <testcase name="testMapper" classname="test.AvgWordLengthTest" time="0.382"/>
+    <testcase name="testMapReduce" classname="test.AvgWordLengthTest" time="0.313"/>
+  </testsuite>
+</testrun>

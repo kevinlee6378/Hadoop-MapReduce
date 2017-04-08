@@ -1,0 +1,107 @@
+package stubs;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import java.util.HashSet;
+import java.util.Set;
+
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.conf.Configurable;
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.mapreduce.Partitioner;
+
+public class SentimentPartitioner extends Partitioner<Text, IntWritable> implements
+Configurable {
+
+	private Configuration configuration;
+	Set<String> positive = new HashSet<String>();
+	Set<String> negative = new HashSet<String>();
+
+	/**
+	 * Set up the positive and negative hash set in the setConf method.
+	 */
+	@Override
+	public void setConf(Configuration configuration) {
+		/*
+		 * Add the positive and negative words to the respective sets using the files 
+		 * positive-words.txt and negative-words.txt.
+		 */
+		/*
+		 * TODO implement 
+		 */
+		this.configuration = configuration;
+		File p = new File("positive-words.txt");
+		File n = new File("negative-words.txt");
+		try {
+			Scanner pscanner = new Scanner(p);
+			while (pscanner.hasNextLine()){
+				String pword = pscanner.nextLine();
+				if (pword.charAt(0) != ';'){
+					positive.add(pword);
+				}
+			}
+			pscanner.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Scanner nscanner = new Scanner(n);
+			while(nscanner.hasNextLine()){
+				String nword = nscanner.nextLine();
+				if (nword.charAt(0) != ';'){
+					negative.add(nword);
+				}
+			}
+			nscanner.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	/**
+	 * Implement the getConf method for the Configurable interface.
+	 */
+	@Override
+	public Configuration getConf() {
+		return configuration;
+	}
+
+	/**
+	 * You must implement the getPartition method for a partitioner class.
+	 * This method receives the words as keys (i.e., the output key from the mapper.)
+	 * It should return an integer representation of the sentiment category
+	 * (positive, negative, neutral).
+	 * 
+	 * For this partitioner to work, the job configuration must have been
+	 * set so that there are exactly 3 reducers.
+	 */
+	public int getPartition(Text key, IntWritable value, int numReduceTasks) {
+		/*
+		 * TODO implement
+		 * Change the return 0 statement below to return the number of the sentiment 
+		 * category; use 0 for positive words, 1 for negative words, and 2 for neutral words. 
+		 * Use the sets of positive and negative words to find out the sentiment.
+		 *
+		 * Hint: use positive.contains(key.toString()) and negative.contains(key.toString())
+		 * If a word appears in both lists assume it is positive. That is, once you found 
+		 * that a word is in the positive list you do not need to check if it is in the 
+		 * negative list. 
+		 */
+		int i = 0;
+		if (positive.contains(key.toString())) {
+			i = 0;
+		}
+		else if (negative.contains(key.toString())) {
+			i = 1;
+		}
+		else {
+			i = 2;
+		}
+		return i;
+	}
+}

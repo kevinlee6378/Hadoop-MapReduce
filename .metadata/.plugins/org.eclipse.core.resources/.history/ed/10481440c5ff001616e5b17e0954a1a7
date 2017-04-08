@@ -1,0 +1,51 @@
+package stubs;
+
+import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+import org.apache.commons.io.FileUtils;
+
+import java.io.File;
+
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.SequenceFile;
+import org.apache.hadoop.conf.Configured;
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.util.Tool;
+import org.apache.hadoop.util.ToolRunner;
+import org.apache.hadoop.io.SequenceFile.Writer;
+
+
+public class SequenceFileWriter extends Configured implements Tool {
+
+  @Override
+  public int run(String[] args) throws Exception {
+
+    if (args.length != 2) {
+      System.out.printf("Usage: SequenceFileWriter <input dir> <output dir>\n");
+      return -1;
+    }
+
+    Job job = new Job(getConf());
+    job.setJarByClass(SequenceFileWriter.class);
+    job.setJobName("Sequence File Writer");
+    FileOutputFormat.setOutputPath(job, new Path(args[1]));
+
+    Configuration config = new Configuration();
+    Writer writer = SequenceFile.createWriter(config, Writer.file(new Path(args[1])), Writer.keyClass(Text.class), Writer.valueClass(Text.class));
+    for (String line: FileUtils.readLines(new File(args[0]))){
+    	int i = line.indexOf(' ');
+   	  	String ip = line.substring(0, i);
+   	  	writer.append(new Text(ip), new Text(line));
+    }
+    writer.close();
+    
+    boolean success = job.waitForCompletion(true);
+    return success ? 0 : 1;
+  }
+
+  public static void main(String[] args) throws Exception {
+    int exitCode = ToolRunner.run(new Configuration(), new SequenceFileWriter(), args);
+    System.exit(exitCode);
+  }
+}

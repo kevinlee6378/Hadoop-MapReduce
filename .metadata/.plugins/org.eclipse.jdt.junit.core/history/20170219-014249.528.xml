@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestProcessLogs" project="log_file_analysis" tests="3" started="3" failures="0" errors="0" ignored="0">
+  <testsuite name="test.TestProcessLogs" time="1.905">
+    <testcase name="testReducer" classname="test.TestProcessLogs" time="1.566"/>
+    <testcase name="testMapper" classname="test.TestProcessLogs" time="0.178"/>
+    <testcase name="testMapReduce" classname="test.TestProcessLogs" time="0.161"/>
+  </testsuite>
+</testrun>

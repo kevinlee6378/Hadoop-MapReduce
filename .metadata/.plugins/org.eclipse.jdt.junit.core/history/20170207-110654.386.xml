@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestWordCount (1)" project="mrunit" tests="3" started="3" failures="0" errors="0" ignored="0">
+  <testsuite name="stubs.TestWordCount" time="7.959">
+    <testcase name="testReducer" classname="stubs.TestWordCount" time="7.546"/>
+    <testcase name="testMapper" classname="stubs.TestWordCount" time="0.249"/>
+    <testcase name="testMapReduce" classname="stubs.TestWordCount" time="0.164"/>
+  </testsuite>
+</testrun>
